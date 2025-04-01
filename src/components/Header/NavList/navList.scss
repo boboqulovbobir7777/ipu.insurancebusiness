@@ -1,0 +1,81 @@
+.header-navbar {
+  display: flex;
+  color: #8f8f8f;
+  text-transform: capitalize;
+  li {
+    cursor: pointer;
+    padding: 12px 15px;
+    transition: 0.3s;
+    &:hover {
+      background-color: #23d59c;
+      color: white;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    position: absolute;
+    top: 88px;
+    left: -100%;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    transition: 0.5s;
+    z-index: 20;
+    li {
+      color: white;
+      padding: 10px 12px;
+    }
+    &.active {
+      left: 0;
+    }
+  }
+}
+.burger-continer {
+  display: none;
+  .burger-checkbox {
+    position: absolute;
+    visibility: hidden;
+  }
+  .burger {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    border: none;
+    background: transparent;
+    width: 40px;
+    height: 26px;
+  }
+  .burger::before,
+  .burger::after {
+    content: "";
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background: #000;
+  }
+  .burger::before {
+    top: 0;
+    box-shadow: 0 11px 0 #000;
+    transition: box-shadow 0.3s 0.15s, top 0.3s 0.15s, transform 0.3s;
+  }
+  .burger::after {
+    bottom: 0;
+    transition: bottom 0.3s 0.15s, transform 0.3s;
+  }
+  .burger-checkbox:checked + .burger::before {
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
+    transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
+  }
+  .burger-checkbox:checked + .burger::after {
+    bottom: 11px;
+    transform: rotate(-45deg);
+    transition: bottom 0.3s, transform 0.3s 0.15s;
+  }
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
